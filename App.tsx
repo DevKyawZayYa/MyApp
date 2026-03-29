@@ -5,31 +5,21 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { AppProvider } from './src/app/providers/app-provider';
+import { RootNavigator } from './src/app/navigation/root-navigator';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-  <SafeAreaView style={styles.container}>
-     <Text style={{}}>Kyaw Zay Ya</Text> 
-    </SafeAreaView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <AppProvider>
+        <StatusBar barStyle="dark-content" />
+        <RootNavigator />
+      </AppProvider>
+    </GestureHandlerRootView>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-});
 
 export default App;
